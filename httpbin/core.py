@@ -55,6 +55,7 @@ BaseResponse.autocorrect_location_header = False
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 
 app = Flask(__name__, template_folder=tmpl_dir)
+app.url_map.strict_slashes = False
 app.debug = bool(os.environ.get('DEBUG'))
 
 # Setup Flask-Common.
@@ -103,7 +104,7 @@ def set_cors_headers(response):
 # Routes
 # ------
 
-@app.route('/')
+@app.route('/'z)
 def view_landing_page():
     """Generates Landing Page."""
     tracking_enabled = 'HTTPBIN_TRACKING' in os.environ
